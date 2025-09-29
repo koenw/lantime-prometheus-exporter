@@ -6,6 +6,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 COPY . .
 
+ENV UV_PROJECT_ENVIRONMENT=/usr/local
+
 RUN uv sync --locked
 
-ENTRYPOINT ["uv", "run", "python", "src/main.py"]
+ENTRYPOINT ["python", "src/main.py"]
