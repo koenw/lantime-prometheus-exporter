@@ -63,9 +63,9 @@ class LANTIMECollector:
         self.username = username
         self.password = password
 
-    def fetch(self) -> dict[str, Any]:
+    def fetch(self, timeout: int = 2) -> dict[str, Any]:
         """Fetch the device status from the Meinberg LANTIME REST API"""
-        with urlopen(self.url) as page:
+        with urlopen(self.url, timeout=timeout) as page:
             data = json.loads(page.read().decode())
             return data
 
